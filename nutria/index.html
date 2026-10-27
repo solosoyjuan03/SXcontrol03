@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — Nutria (nutria/index.html)
+  ------------------------------------------
+  Proyecto: calculadora nutricional.
+  El usuario indica:
+    1. Datos básicos (edad, sexo, peso, altura, actividad)
+    2. Enfermedades / condiciones que tiene (checkboxes)
+    3. Tipo de alimentación que sigue
+  Y Nutria calcula:
+    - Sus calorías y macronutrientes recomendados (fórmula Mifflin-St Jeor)
+    - Consejos según sus enfermedades y alimentación
+    - Alertas de riesgos asociados a sus condiciones (educativo)
+
+  IMPORTANTE:
+  - No reemplaza la consulta con un profesional de la salud.
+  - Los datos usados son fórmulas estándar y publicaciones de la OMS.
+
+  TODO pendiente:
+  - El footer apunta a "#": enlaces sociales pendientes.
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutria — Calculadora nutricional | SXcontrol</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="nutria.css">
+</head>
+
+<body>
+  <!-- ============ BARRA DE NAVEGACIÓN ============ -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Inicio</a>
+        <a href="../comunidad/comunidad.html">Comunidad</a>
+        <a href="../proyectos/Proyectos.html">Proyectos</a>
+        <a href="../servicios/servicios.html">Servicios</a>
+        <a href="#calculadora" class="btn btn-outline nav-cta">Calcular</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">SXcontrol · Nutria</p>
+        <h1>Tu aliado en <span class="accent">alimentación consciente</span></h1>
+        <p class="lead">
+          Calcula tus necesidades nutricionales según tu cuerpo, tus condiciones de salud y
+          tu forma de alimentarte. Con consejos prácticos y alertas educativas.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CALCULADORA ============ -->
+    <section class="section" id="calculadora">
+      <div class="container container-sm">
+        <h2 class="section-title">1. Tus <span class="accent">datos</span></h2>
+
+        <!-- Paso 1: datos básicos -->
+        <div class="paso-card">
+          <div class="campo-fila">
+            <label>Edad (años)
+              <input type="number" id="edad" min="5" max="100" placeholder="30">
+            </label>
+            <label>Sexo
+              <select id="sexo">
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+              </select>
+            </label>
+          </div>
+          <div class="campo-fila">
+            <label>Peso (kg)
+              <input type="number" id="peso" min="20" max="300" placeholder="70">
+            </label>
+            <label>Altura (cm)
+              <input type="number" id="altura" min="100" max="220" placeholder="170">
+              </level>
+          </div>
+        </div>
+
+        <!-- Paso 2: actividad física -->
+        <h2 class="section-title">2. Tu <span class="accent">actividad</span></h2>
+        <div class="paso-card">
+          <label class="campo-label">Nivel de actividad física</label>
+          <div class="opciones-actividad">
+            <button class="actividad-btn" data-factor="1.2">Sedentario</button>
+            <button class="actividad-btn" data-factor="1.375">Ligera</button>
+            <button class="actividad-btn" data-factor="1.55">Moderada</button>
+            <button class="actividad-btn" data-factor="1.725">Intensa</button>
+          </div>
+          <p class="ayuda">
+            Sedentario: oficina o poco movimiento · Ligera: camina 1-3 días/semana ·
+            Moderada: ejercicio 3-5 días/semana · Intensa: ejercicio 6-7 días/semana
+          </p>
+        </div>
+
+        <!-- Paso 3: enfermedades -->
+        <h2 class="section-title">3. Tus <span class="accent">condiciones</span></h2>
+        <div class="paso-card">
+          <p class="ayuda">Marca las que aplican a ti (puedes marcar varias o ninguna).</p>
+          <div class="condiciones" id="condiciones"><!-- checkboxes generados por JS --></div>
+        </div>
+
+        <!-- Paso 4: tipo de alimentación -->
+        <h2 class="section-title">4. Tu <span class="accent">alimentación</span></h2>
+        <div class="paso-card">
+          <label class="campo-label">Tipo de alimentación que sigues</label>
+          <div class="opciones-actividad">
+            <button class="alimentacion-btn" data-alim="omnivora">Omnívora</button>
+            <button class="alimentacion-btn" data-alim="vegetariana">Vegetariana</button>
+            <button class="alimentacion-btn" data-alim="vegana">Vegana</button>
+            <button class="alimentacion-btn" data-alim="sin-gluten">Sin gluten</button>
+            <button class="alimentacion-btn" data-alim="sin-lactosa">Sin lactosa</button>
+          </div>
+
+          <!-- Botón de calcular -->
+          <button class="btn btn-solid btn-lg calcular-btn" id="btnCalcular">Calcular mi nutrición</button>
+
+          <!-- ============ RESULTADOS ============ -->
+          <div id="resultados" hidden>
+            <h2 class="section-title">Tus <span class="accent">resultados</span></h2>
+
+            <!-- Resumen de calorías y macros -->
+            <div class="resultado-grid">
+              <div class="resultado-card">
+                <p class="res-num" id="resCalorias">0</p>
+                <p class="res-label">Calorías/día</p>
+              </div>
+              <div class="resultado-card">
+                <p class="res-num" id="resProteina">0g</p>
+                <p class="res-label">Proteína</p>
+              </div>
+              <div class="resultado-card">
+                <p class="res-num" id="resGrasas">0g</p>
+                <p class="res-label">Grasas</p>
+              </div>
+              <div class="resultado-card">
+                <p class="res-num" id="resCarbos">0g</p>
+                <p class="res-label">Carbohidratos</p>
+              </div>
+              `
+            </div>
+
+            <!-- IMC -->
+            <div class="resultado-card imc-card">
+              <p class="res-label">Tu Índice de Masa Corporal (IMC)</p>
+              <p class="res-num" id="resImc">0</p>
+              <p class="res-imc-categoria" id="resImcCategoria"></p>
+            </div>
+
+            <!-- Consejos según condiciones -->
+            <div class="resultado-card">
+              <h3>Consejos para ti</h3>
+              <ul id="resConsejos"></ul>
+            </div>
+
+            <!-- Alertas de riesgos -->
+            <div class="resultado-card alerta-card" id="alertasCard" hidden>
+              <h3>⚠️ Alertas de salud</h3>
+              <ul id="resAlertas"></ul>
+            </div>
+
+            <!-- Aviso legal -->
+            <div class="aviso">
+              ⚠️ <strong>Aviso:</strong> estos resultados son orientativos y no reemplazan la
+              consulta con un médico o nutricionista. Los datos provienen de fórmulas estándar
+              (Mifflin-St Jeor) y recomendaciones generales de la OMS.
+            </div>
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <!-- TODO: reemplaza "#" por las URLs reales cuando tengas las cuentas -->
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nutria.js"></script>
+</body>
+
+</html>

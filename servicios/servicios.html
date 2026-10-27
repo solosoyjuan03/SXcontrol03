@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — Página de Servicios (servicios/servicios.html)
+  ------------------------------------------
+  Los servicios se definen en script.js, en el array "servicios".
+  Si el array está vacío, aquí se muestra el mensaje "Aún no hay
+  servicios activos" (está en el div #servicesGrid, más abajo).
+
+  TODO pendiente en esta página:
+  - El botón "Contactar a SXcontrol" apunta a "#". Cámbialo por tu
+    correo o formulario de contacto real.
+  - Los enlaces del footer (GitHub/Discord/Mastodon) están en "#".
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios — SXcontrol</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <a href="../comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="../proyectos/Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="servicios.html" class="nav-link active">Servicios</a>
+        <a href="#contacto" class="btn btn-outline nav-cta">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">Servicios</p>
+        <h1>Lo que la comunidad <span class="accent">ofrece</span></h1>
+        <p class="lead">Lo que SXcontrol ofrece a sus miembros y al ecosistema open source.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Los servicios se pintan aquí automáticamente con script.js.
+             El párrafo de abajo es el mensaje que se ve mientras el array
+             "servicios" de script.js esté vacío. Cuando agregues servicios,
+             borra este párrafo. -->
+        <div class="grid grid-4" id="servicesGrid">
+          <p class="section-sub">Aún no hay servicios activos. Agrega aquí los servicios reales cuando los ofrezcas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contacto">
+      <div class="container cta-inner">
+        <h2>¿Necesitas algo más específico?</h2>
+        <p>Escríbenos y coordinamos mentorías, talleres o apoyo para tu equipo u organización.</p>
+        <!-- TODO: cambia "#" por tu correo o formulario de contacto real -->
+        <a href="#" class="btn btn-solid btn-lg">Contactar a SXcontrol</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

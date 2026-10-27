@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — Página de Proyectos (proyectos/Proyectos.html)
+  ------------------------------------------
+  Los proyectos se definen en script.js, en el array "proyectos".
+  Si el array está vacío, aquí se muestra el mensaje "Aún no hay
+  proyectos publicados" (está en el div #projectsGrid, más abajo).
+
+  Los botones de filtro (Web / CLI / Librerías) corresponden a las
+  categorías "web", "cli" y "librerias" de script.js. Si agregas
+  una categoría nueva en script.js, agrega también un botón aquí
+  con el mismo valor en data-filter.
+
+  TODO pendiente en esta página:
+  - El botón "Ver guía de contribución" apunta a "#". Cámbialo cuando
+    escribas la guía (por ejemplo un archivo CONTRIBUTING.md).
+  - Los enlaces del footer (GitHub/Discord/Mastodon) están en "#".
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos — SXcontrol</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <a href="../comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="Proyectos.html" class="nav-link active">Proyectos</a>
+        <a href="../servicios/servicios.html" class="nav-link">Servicios</a>
+        <a href="#contribuir" class="btn btn-outline nav-cta">Contribuir</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">Proyectos</p>
+        <h1>Código libre, <span class="accent">hecho en comunidad</span></h1>
+        <p class="lead">Herramientas y librerías creadas por la comunidad, libres y abiertas.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Botones de filtro: cada uno debe coincidir con una categoría
+             de script.js (data-filter="web" → cat: "web"). Si agregas una
+             categoría nueva en script.js, agrega un botón con su data-filter. -->
+        <div class="filters" id="projectFilters">
+          <button class="filter active" data-filter="todos">Todos</button>
+          <button class="filter" data-filter="web">Web</button>
+          <button class="filter" data-filter="cli">CLI</button>
+          <button class="filter" data-filter="librerias">Librerías</button>
+        </div>
+
+        <!-- Los proyectos se pintan aquí automáticamente con script.js.
+             El párrafo de abajo es el mensaje que se ve mientras el array
+             "proyectos" de script.js esté vacío. Cuando agregues proyectos,
+             borra este párrafo. -->
+        <div class="grid grid-3" id="projectsGrid">
+          <p class="section-sub">Aún no hay proyectos publicados. Agrega aquí los tuyos cuando los subas a GitHub.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contribuir">
+      <div class="container cta-inner">
+        <h2>¿Quieres contribuir?</h2>
+        <p>Revisa los issues marcados como <strong>good first issue</strong> y envía tu primer PR.</p>
+        <!-- TODO: cambia "#" por la URL real de la guía cuando la escribas -->
+        <a href="#" class="btn btn-solid btn-lg">Ver guía de contribución</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

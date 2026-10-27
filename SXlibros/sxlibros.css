@@ -1,0 +1,79 @@
+/* ============================================
+   SXlibros — sxlibros.css
+   Estilos propios del catálogo de libros.
+   La base (colores, navbar, tarjetas, footer) viene de ../styles.css
+   ============================================ */
+
+/* ---------- Portada del libro (tarjeta) ---------- */
+/* Cada tarjeta muestra la portada del libro con su título y descripción */
+.portada {
+  height: 150px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  margin: -1.5rem -1.5rem 1rem;
+  /* hace que la portada cubra todo el ancho de la tarjeta */
+  background: linear-gradient(135deg, var(--orange-soft), var(--orange));
+}
+
+/* ---------- Navegación entre páginas del libro ---------- */
+/* Barra con botones Anterior / Siguiente al final de cada página del libro */
+.nav-libro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray);
+}
+
+/* Indicador de página: "Página 1 de 3" */
+.indice-pagina {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Contenido del libro ---------- */
+/* Contenedor más angosto para que el texto se lea cómodo */
+.libro-contenido {
+  width: min(760px, 92%);
+  margin: 0 auto;
+}
+
+.libro-contenido h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.libro-contenido h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.libro-contenido p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+/* Listas dentro del libro */
+.libro-contenido ul {
+  margin: 0 0 1rem 1.4rem;
+  color: var(--text-muted);
+}
+
+.libro-contenido li {
+  margin-bottom: 0.4rem;
+}
+
+/* Caja destacada para ideas clave */
+.destacado {
+  background: var(--orange-soft);
+  border-left: 4px solid var(--orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0;
+  color: var(--white);
+}

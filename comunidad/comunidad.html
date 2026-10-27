@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — Página de Comunidad (comunidad/comunidad.html)
+  ------------------------------------------
+  Las noticias se definen en script.js, en el array "noticias".
+  Si el array está vacío, aquí se muestra el mensaje "Aún no hay
+  noticias publicadas" (está en el div #newsGrid, más abajo).
+
+  TODO pendiente en esta página:
+  - El botón "Unirme a la comunidad" apunta a "#" (no lleva a ninguna
+    parte). Cámbialo por la URL de tu Discord o formulario de contacto.
+  - Los enlaces del footer (GitHub/Discord/Mastodon) están en "#".
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comunidad — SXcontrol</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <a href="comunidad.html" class="nav-link active">Comunidad</a>
+        <a href="../proyectos/Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="../servicios/servicios.html" class="nav-link">Servicios</a>
+        <a href="#unete" class="btn btn-outline nav-cta">Únete</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">Comunidad</p>
+        <h1>Noticias y <span class="accent">novedades</span></h1>
+        <p class="lead">Lo último que pasa en SXcontrol: eventos, anuncios y logros de la comunidad.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Las noticias se pintan aquí automáticamente con script.js.
+             El texto de abajo es el mensaje que se ve mientras el array
+             "noticias" de script.js esté vacío. Cuando agregues noticias,
+             borra este párrafo. -->
+        <div class="grid grid-3" id="newsGrid">
+          <p class="section-sub">Aún no hay noticias publicadas. Vuelve pronto para ver las novedades de la comunidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="unete">
+      <div class="container cta-inner">
+        <h2>¿Quieres estar al día?</h2>
+        <p>Síguenos en nuestras redes y entra al Discord para no perderte nada.</p>
+        <!-- TODO: cambia "#" por la URL real de tu Discord/formulario -->
+        <a href="#" class="btn btn-solid btn-lg">Unirme a la comunidad</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

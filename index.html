@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — Página de inicio (index.html)
+  ------------------------------------------
+  CÓMO SE ORGANIZA ESTE PROYECTO:
+  - index.html                -> esta página (inicio)
+  - comunidad/comunidad.html  -> noticias y novedades
+  - proyectos/Proyectos.html  -> lista de proyectos
+  - servicios/servicios.html  -> servicios de la comunidad
+  - styles.css                -> TODOS los estilos (compartido)
+  - script.js                 -> TODOS los datos y comportamiento (compartido)
+
+  PARA AGREGAR CONTENIDO:
+  - Las noticias, proyectos y servicios NO se editan aquí, se editan en
+    script.js (busca los arrays "noticias", "proyectos" y "servicios").
+  - Los enlaces de las redes sociales están en el footer, al final de
+    CADA página html (cámbialos en las 4 páginas si cambias la URL).
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>SXcontrol — Comunidad Open Source</title>
+  <!-- Hoja de estilos compartida por todas las páginas -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ============ BARRA DE NAVEGACIÓN (igual en todas las páginas) ============ -->
+  <!-- Si cambias la estructura de carpetas, actualiza los href de aquí
+       y de las otras 3 páginas. -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">SX<span>control</span></a>
+      <!-- Botón del menú móvil (solo se ve en pantallas pequeñas, ver styles.css) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Inicio</a>
+        <a href="comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="proyectos/Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="servicios/servicios.html" class="nav-link">Servicios</a>
+        <a href="comunidad/comunidad.html" class="btn btn-outline nav-cta">Únete</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ INICIO / HERO ============ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Comunidad Open Source</p>
+        <h1>Construyamos software libre, <span class="accent">juntos</span>.</h1>
+        <p class="lead">
+          <!-- Texto de presentación. Cambia la descripción aquí cuando quieras. -->
+          SXcontrol es una comunidad de desarrolladores, diseñadores y entusiastas
+          que busca crear, mantener y compartir proyectos open source en español.
+        </p>
+        <div class="hero-actions">
+          <a href="proyectos/Proyectos.html" class="btn btn-solid">Ver proyectos</a>
+          <a href="comunidad/comunidad.html" class="btn btn-outline">Únete a la comunidad</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACCESOS RÁPIDOS ============ -->
+    <!-- Tres tarjetas que enlazan a las demás páginas.
+         La descripción dice "Próximamente" porque aún no hay contenido real.
+         Cuando agregues noticias/proyectos/servicios en script.js,
+         quita la palabra "Próximamente:" de estos textos. -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Explora <span class="accent">SXcontrol</span></h2>
+        <p class="section-sub">Tres espacios, una sola comunidad.</p>
+        <div class="grid grid-3">
+          <a href="comunidad/comunidad.html" class="card card-link-card">
+            <div class="card-icon">📰</div>
+            <h3>Comunidad</h3>
+            <p>Próximamente: noticias, eventos y novedades de la comunidad.</p>
+            <span class="card-link">Entrar →</span>
+          </a>
+          <a href="proyectos/Proyectos.html" class="card card-link-card">
+            <div class="card-icon">🚀</div>
+            <h3>Proyectos</h3>
+            <p>Próximamente: herramientas y librerías open source creadas por la comunidad.</p>
+            <span class="card-link">Explorar →</span>
+          </a>
+          <a href="servicios/servicios.html" class="card card-link-card">
+            <div class="card-icon">🛠️</div>
+            <h3>Servicios</h3>
+            <p>Próximamente: mentorías, talleres, revisión de código y más.</p>
+            <span class="card-link">Descubrir →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA (llamada a la acción) ============ -->
+    <section class="cta">
+      <div class="container cta-inner">
+        <h2>¿Listo para contribuir?</h2>
+        <p>Todavía estamos empezando. Si quieres acompañarnos desde el inicio, escríbenos y cuéntanos en qué te interesa contribuir.</p>
+        <!-- Cuando tengas un Discord o formulario de contacto, cambia este
+             href a la URL real. -->
+        <a href="comunidad/comunidad.html" class="btn btn-solid btn-lg">Conocer la comunidad</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (igual en todas las páginas) ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <!-- TODO: reemplaza los "#" por las URLs reales cuando tengas
+           las cuentas de GitHub, Discord y Mastodon. Mientras estén en "#",
+           los enlaces no llevan a ninguna parte. Recuerda hacerlo también en
+           comunidad/comunidad.html, proyectos/Proyectos.html y
+           servicios/servicios.html -->
+      <div class="socials">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript compartido: datos, menú móvil y filtros -->
+  <script src="script.js"></script>
+</body>
+</html>
