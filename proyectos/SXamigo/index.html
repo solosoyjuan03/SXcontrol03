@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — SXamigo (SXamigo/index.html)
+  ------------------------------------------
+  Proyecto: información de importancia ciudadana — migración y denuncias.
+
+  TODO pendiente en esta página:
+  - Los enlaces de las instituciones oficiales apuntan a sitios reales
+    y conocidos, pero verifícalos antes de publicar el sitio.
+  - El footer apunta a "index.html" (inicio del sitio).
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SXamigo — Información ciudadana | SXcontrol</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <!-- Estilos propios de este proyecto (tarjetas de contenido y acordeón) -->
+  <link rel="stylesheet" href="sxamigo.css">
+</head>
+
+<body>
+  <!-- ============ BARRA DE NAVEGACIÓN ============ -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../../index.html" class="nav-link">Inicio</a>
+        <a href="../../comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="../Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="../../servicios/servicios.html" class="nav-link">Servicios</a>
+        <a href="#recursos" class="btn btn-outline nav-cta">Recursos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">SXcontrol · SXamigo</p>
+        <h1>Información que <span class="accent">te acompaña</span></h1>
+        <p class="lead">
+          Guía de información sobre migración y denuncias: temas de importancia
+          ciudadana, explicados en lenguaje claro.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ MIGRACIÓN (acordeón) ============ -->
+    <!-- Cada bloque es un <details>/<summary>: se abre y cierra con un clic,
+         sin JavaScript adicional (funcionalidad nativa del navegador). -->
+    <section class="section" id="migracion">
+      <div class="container">
+        <h2 class="section-title">Migración</h2>
+        <p class="section-sub">Información general para personas en proceso de migración. No reemplaza asesoría legal
+          profesional.</p>
+        <div class="accordion">
+          <details>
+            <summary>¿Qué es la migración regular?</summary>
+            <p>Migrar de forma regular significa ingresar y permanecer en un país con un estatus legal reconocido: visa
+              de trabajo, visa de estudio, residencia, asilo o refugio, según el caso. Cada país tiene sus propias
+              categorías y requisitos.</p>
+          </details>
+          <details>
+            <summary>¿Qué documentos debo cuidar?</summary>
+            <p>Guarda en un lugar seguro: pasaporte vigente, visa o permiso de residencia, actas de nacimiento y
+              matrimonio, certificados de estudios y antecedentes. Ten copias físicas y digitales de todos.</p>
+          </details>
+          <details>
+            <summary>¿Qué es el asilo y quiénes pueden solicitarlo?</summary>
+            <p>El asilo es una protección internacional para personas que huyen de su país por persecución por motivos
+              de raza, religión, nacionalidad, opinión política o pertenencia a un grupo social. Debes solicitarlo en el
+              país de destino y demostrar temor fundado de persecución.</p>
+          </details>
+          <details>
+            <summary>¿Cómo evito fraudes y estafas migratorias?</summary>
+            <p>Desconfía de quien prometa "papeles garantizados" o trámites "express" por dinero en efectivo. Verifica
+              siempre que la persona o agencia esté registrada oficialmente y consulta los trámites directamente en los
+              sitios oficiales del gobierno.</p>
+          </details>
+          <details>
+            <summary>¿Dónde puedo buscar ayuda si estoy en tránsito?</summary>
+            <p>Organizaciones como ACNUR (Agencia de la ONU para los Refugiados), la OIM (Organización Internacional
+              para las Migraciones) y la Cruz Roja tienen oficinas y puntos de atención en varias ciudades con
+              información gratuita.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DENUNCIAS (acordeón) ============ -->
+    <section class="section section-alt" id="denuncias">
+      <div class="container">
+        <h2 class="section-title">Denuncias</h2>
+        <p class="section-sub">Cómo reportar situaciones que afectan tus derechos. No reemplaza asesoría legal
+          profesional.</p>
+        <div class="accordion">
+          <details>
+            <summary>¿Qué es una denuncia y para qué sirve?</summary>
+            <p>Una denuncia es el reporte formal ante una autoridad competente sobre una conducta que puede ser un
+              delito o una violación a tus derechos. Sirve para que la autoridad investigue y, si corresponde, sancione.
+            </p>
+          </details>
+          <details>
+            <summary>¿Qué es el tráfico de personas y cómo denunciarlo?</summary>
+            <p>El tráfico de personas es el reclutamiento y traslado de personas mediante engaño, fuerza o coacción para
+              explotarlas (laboral, sexual u otras formas). Si conoces o vives una situación así, repórtala de inmediato
+              a las líneas de emergencia de tu país.</p>
+          </details>
+          <details>
+            <summary>¿Cómo denuncio abuso laboral?</summary>
+            <p>Si te niegan el pago de salarios, te obligan a jornadas excesivas o te retienen documentos, puedes acudir
+              al Ministerio de Trabajo o a la inspección laboral de tu país. Guarda pruebas: contratos, recibos,
+              mensajes y testigos.</p>
+          </details>
+          <details>
+            <summary>¿Cómo denuncio discriminación?</summary>
+            <p>La discriminación por origen nacional, etnia, género, lengua o discapacidad está prohibida en la mayoría
+              de los países. Puedes reportarla ante los organismos de derechos humanos nacionales o ante la Defensoría
+              del Pueblo / Ombudsman.</p>
+          </details>
+          <details>
+            <summary>¿Qué debo tener al hacer una denuncia?</summary>
+            <p>La mayor cantidad de información posible: fechas, lugares, nombres, descripción de lo ocurrido y
+              cualquier prueba disponible (fotos, mensajes, documentos). Tienes derecho a recibir una copia de tu
+              denuncia.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RECURSOS OFICIALES ============ -->
+    <section class="section" id="recursos">
+      <div class="container">
+        <h2 class="section-title">Recursos <span class="accent">oficiales</span></h2>
+        <p class="section-sub">Organizaciones y organismos con información oficial y gratuita.</p>
+        <div class="grid grid-3">
+          <a href="https://www.acnur.org" target="_blank" rel="noopener noreferrer" class="card card-link-card">
+            <div class="card-icon">🛡️</div>
+            <h3>ACNUR</h3>
+            <p>Agencia de la ONU para los Refugiados. Información sobre asilo y protección internacional.</p>
+            <span class="card-link">Visitar sitio →</span>
+          </a>
+          <a href="https://www.iom.int" target="_blank" rel="noopener noreferrer" class="card card-link-card">
+            <div class="card-icon">🧭</div>
+            <h3>OIM</h3>
+            <p>Organización Internacional para las Migraciones. Información sobre migración regular y asistencia.</p>
+            <span class="card-link">Visitar sitio →</span>
+          </a>
+          <a href="https://www.icrc.org" target="_blank" rel="noopener noreferrer" class="card card-link-card">
+            <div class="card-icon">➕</div>
+            <h3>Cruz Roja</h3>
+            <p>Asistencia humanitaria y apoyo en emergencias para personas migrantes.</p>
+            <span class="card-link">Visitar sitio →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AVISO ============ -->
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-sub">
+          ⚠️ <strong>Aviso importante:</strong> SXamigo es una guía informativa elaborada por una comunidad
+          y no reemplaza la asesoría de un profesional del derecho. Las leyes cambian según el país y el
+          tiempo: verifica siempre con las fuentes oficiales del gobierno correspondiente.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <!-- TODO: reemplaza "#" por las URLs reales cuando tengas las cuentas -->
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <!-- JS propio: menú móvil (el compartido ya lo hace, este es solo para
+       comprobar que la página funcione si se abre sola) -->
+  <script src="sxamigo.js"></script>
+</body>
+
+</html>

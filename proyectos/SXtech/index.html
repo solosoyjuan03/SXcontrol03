@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — SXtech (proyectos/SXtech/index.html)
+  ------------------------------------------
+  Proyecto: rutas técnicas tipo Duolingo — aprendizaje por habilidades
+  con niveles y práctica. Tres rutas:
+    1. Programación (Python)
+    2. Inglés para el trabajo (A1 + verbo to be)
+    3. Gestión
+
+  CÓMO FUNCIONA:
+  - Las rutas se definen en sxtech.js, en el array "rutas".
+  - Cada ruta tiene módulos y cada módulo tiene lecciones.
+  - Al hacer clic en una lección se abre una práctica de preguntas
+    y respuestas (tipo Duolingo): se muestra la pregunta, eliges una
+    opción y la app dice si acertaste.
+  - El progreso se guarda en localStorage (el navegador recuerda
+    qué lecciones completaste, sin servidor ni cuentas).
+
+  TODO pendiente:
+  - Agregar más preguntas y módulos en sxtech.js.
+  - El footer apunta a "#": enlaces sociales pendientes.
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SXtech — Rutas técnicas | SXcontrol</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <!-- Estilos propios: rutas, lecciones y práctica tipo Duolingo -->
+  <link rel="stylesheet" href="sxtech.css">
+</head>
+
+<body>
+  <!-- ============ BARRA DE NAVEGACIÓN ============ -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../../index.html" class="nav-link">Inicio</a>
+        <a href="../../comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="../Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="../../servicios/servicios.html" class="nav-link">Servicios</a>
+        <a href="#rutas" class="btn btn-outline nav-cta">Empezar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">SXcontrol · SXtech</p>
+        <h1>Aprende habilidades, <span class="accent">lección a lección</span></h1>
+        <p class="lead">
+          Rutas técnicas tipo Duolingo: practica programación, inglés para el
+          trabajo y gestión con lecciones cortas y progresivas.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SELECCIÓN DE RUTA ============ -->
+    <!-- Los botones de ruta se pintan con JS (array "rutas" en sxtech.js) -->
+    <section class="section" id="rutas">
+      <div class="container">
+        <h2 class="section-title">Elige tu <span class="accent">ruta</span></h2>
+        <p class="section-sub">Cada ruta se divide en módulos y lecciones cortas. Tu progreso se guarda en este
+          navegador.</p>
+
+        <!-- Botones de las rutas (Python / Inglés / Gestión) -->
+        <div class="ruta-tabs" id="rutaTabs"><!-- se llena con JS --></div>
+
+        <!-- Panel con módulos y lecciones de la ruta seleccionada -->
+        <div id="rutaPanel"><!-- se llena con JS --></div>
+      </div>
+    </section>
+
+    <!-- ============ ÁREA DE PRÁCTICA ============ -->
+    <!-- Ventana modal fija: cubre la pantalla completa con scroll propio,
+         así las preguntas siempre quedan a la vista sin hacer scroll largo -->
+    <div class="practica-zona" id="practicaZona" hidden>
+      <!-- Barra superior: siempre visible para cerrar la práctica -->
+      <div class="practica-topbar">
+        <h2 class="section-title" style="font-size:1.3rem;margin:0"><span id="practicaTituloAntes"></span><span class="accent" id="practicaTitulo"></span></h2>
+        <button class="btn-cerrar-practica" id="btnCerrarTop">✕ Cerrar</button>
+      </div>
+
+      <div class="container container-sm">
+        <!-- Barra de progreso de la lección -->
+        <div class="progreso-barra">
+          <div class="progreso-relleno" id="progresoRelleno"></div>
+        </div>
+        <p class="progreso-texto" id="progresoTexto"></p>
+
+        <!-- Tarjeta de lectura (lecciones de teoría, en pasos tipo Mimo) -->
+        <div class="pregunta-card" id="teoriaCard" hidden>
+          <!-- Puntos de progreso de los pasos de la lección -->
+          <div class="puntos-pasos" id="puntosPasos"></div>
+          <div id="teoriaPasos" class="teoria-pasos"><!-- paso actual se llena con JS --></div>
+          <!-- Botón Continuar fijo abajo, como Mimo -->
+          <button class="btn-continuar" id="btnContinuar">Continuar →</button>
+        </div>
+
+        <!-- Tarjeta de ordenar código (tipo Mimo: editor script.py) -->
+        <div class="pregunta-card" id="ordenarCard" hidden>
+          <div class="editor-codigo">
+            <div class="editor-cab"><span class="editor-dot"></span> script.py</div>
+            <div class="editor-zona">
+              <p class="ordenar-instrucciones" id="ordenarInstr"></p>
+              <div class="ordenar-respuesta" id="ordenarRespuesta"></div>
+              <div class="ordenar-lineas" id="ordenarLineas"></div>
+            </div>
+          </div>
+          <div class="feedback" id="feedbackOrdenar"></div>
+          <button class="btn btn-solid" id="btnControlar">Controlar ✓</button>
+        </div>
+
+        <!-- Tarjeta de completar código (huecos con piezas) -->
+        <div class="pregunta-card" id="completarCard" hidden>
+          <div class="editor-codigo">
+            <div class="editor-cab"><span class="editor-dot"></span> script.py</div>
+            <div class="editor-zona">
+              <p class="ordenar-instrucciones" id="completarInstr"></p>
+              <div class="completar-codigo" id="completarCodigo"></div>
+            </div>
+          </div>
+          <div class="feedback" id="feedbackCompletar"></div>
+          <div class="editor-pie">
+            <button class="btn-editor" id="btnCompletarReiniciar">↺ Reiniciar</button>
+            <button class="btn btn-solid" id="btnVerificar">Controlar ✓</button>
+          </div>
+        </div>
+
+        <!-- Tarjeta de la pregunta actual -->
+        <div class="pregunta-card" id="preguntaCard" hidden>
+          <p class="pregunta-texto" id="preguntaTexto"></p>
+          <div class="opciones" id="opciones"><!-- opciones se llenan con JS --></div>
+          <div class="feedback" id="feedback"></div>
+          <button class="btn btn-solid" id="btnSiguiente" hidden>Siguiente →</button>
+        </div>
+
+        <!-- Pantalla final de la lección -->
+        <div class="leccion-final" id="leccionFinal" hidden>
+          <p class="final-emoji">🎉</p>
+          <h3 id="finalTitulo"></h3>
+          <p class="section-sub" id="finalTexto"></p>
+          <!-- Navegación: repetir o pasar directo a la siguiente lección -->
+          <div class="navegacion-lecciones">
+            <button class="btn btn-outline" id="btnRepetir">↺ Repetir lección</button>
+            <button class="btn btn-solid" id="btnSiguienteLeccion">Siguiente lección →</button>
+          </div>
+          <button class="btn-cerrar-practica" id="btnCerrar" style="margin-top:1.2rem">Volver a la ruta</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <!-- TODO: reemplaza "#" por las URLs reales cuando tengas las cuentas -->
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS propio: rutas, lecciones y práctica -->
+  <script src="ruta-python.js"></script>
+  <script src="ruta-ingles.js"></script>
+  <script src="ruta-admin.js"></script>
+  <script src="sxtech.js"></script>
+</body>
+
+</html>

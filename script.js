@@ -49,6 +49,20 @@ const noticias = [
    Si creas una categoría nueva, agrega también su botón de filtro.
    Si el array está vacío, la página muestra el mensaje de
    "Aún no hay proyectos publicados" escrito en proyectos/Proyectos.html.
+
+   IMPORTANTE — UBICACIÓN DE LOS PROYECTOS:
+   Todos los proyectos del sitio viven DENTRO de la carpeta "proyectos/",
+   cada uno en su propia subcarpeta:
+
+     proyectos/SXamigo/    → guía de migración y denuncias
+     proyectos/SXtech/     → rutas técnicas (Python, inglés, administración)
+     proyectos/SXlibros/   → libros web (Educación Inclusiva)
+     proyectos/SXnutria/   → calculadora nutricional
+
+   Por eso las "url" de abajo usan "proyectos/Nombre/index.html"
+   (rutas relativas desde proyectos/Proyectos.html). Si mueves o renombras
+   una carpeta de proyecto, actualiza aquí su "url" y los enlaces internos
+   del proyecto ("../../" hacia la raíz del sitio).
 */
 const proyectos = [
   // Proyectos internos del sitio (cada uno tiene su carpeta y página propia).
@@ -58,25 +72,25 @@ const proyectos = [
     cat: "web",
     titulo: "SXamigo",
     texto: "Guía de información sobre migración y denuncias: temas de importancia ciudadana.",
-    url: "../SXamigo/index.html",
+    url: "SXamigo/index.html",
   },
   {
     cat: "librerias",
     titulo: "SXtech",
     texto: "Rutas técnicas tipo Duolingo: programación, inglés para el trabajo y administración de empresas.",
-    url: "../SXtech/index.html",
+    url: "SXtech/index.html",
   },
   {
     cat: "librerias",
     titulo: "SXlibros",
     texto: "Libros tipo página web sobre diferentes temas. El primero: Educación Inclusiva.",
-    url: "../SXlibros/index.html",
+    url: "SXlibros/index.html",
   },
   {
     cat: "web",
     titulo: "Nutria",
     texto: "Calculadora nutricional: calorías, macronutrientes, IMC y consejos según tus condiciones de salud y tipo de alimentación.",
-    url: "../nutria/index.html",
+    url: "SXnutria/index.html",
   },
 ];
 

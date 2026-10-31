@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — SXlibros / Educación Inclusiva (página 1 de 3)
+  ------------------------------------------
+  Libro tipo página web: se navega con los botones Anterior / Siguiente
+  de la barra inferior. Los estilos vienen de:
+  - ../../../styles.css (base del sitio)
+  - ../sxlibros.css (estilos propios de libros)
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educación Inclusiva — Página 1 | SXlibros</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../sxlibros.css">
+</head>
+
+<body>
+  <!-- ============ BARRA DE NAVEGACIÓN ============ -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../../../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../../../index.html" class="nav-link">Inicio</a>
+        <a href="../../../comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="../../Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="../index.html" class="nav-link active">SXlibros</a>
+        <a href="#contenido" class="btn btn-outline nav-cta">Leer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ PORTADA DEL LIBRO ============ -->
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">SXlibros · Educación Inclusiva</p>
+        <h1>Educación <span class="accent">Inclusiva</span></h1>
+        <p class="lead">Un recorrido breve en tres páginas sobre qué es incluir y cómo hacerlo en el aula.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTENIDO ============ -->
+    <section class="section" id="contenido">
+      <div class="libro-contenido">
+        <h2>Página 1 — ¿Qué es la educación inclusiva?</h2>
+        <p>
+          La educación inclusiva es el modelo que busca que <strong>todas las personas</strong> aprendan
+          juntas en las mismas aulas, sin importar su discapacidad, origen, lengua, género, condición
+          económica o forma de aprender. No se trata de que los estudiantes "se adapten" a la escuela,
+          sino de que la escuela se adapte a la diversidad de quienes aprenden en ella.
+        </p>
+
+        <div class="destacado">
+          <strong>Idea clave:</strong> la inclusión no es lo mismo que la integración. En la integración,
+          el estudiante entra a la escuela pero debe ajustarse a un sistema que no cambia. En la inclusión,
+          el sistema se transforma para que nadie quede fuera.
+        </div>
+
+        <h3>Principios básicos</h3>
+        <ul>
+          <li><strong>Acceso:</strong> todas las personas pueden entrar y permanecer en la escuela.</li>
+          <li><strong>Participación:</strong> todas pueden tomar parte activa en las actividades.</li>
+          <li><strong>Progreso:</strong> todas avanzan según sus propias capacidades y ritmos.</li>
+          <li><strong>Equidad:</strong> cada quien recibe el apoyo que necesita, no el mismo apoyo para todos.</li>
+        </ul>
+
+        <h3>¿De dónde viene?</h3>
+        <p>
+          El marco internacional más importante es la <strong>Convención sobre los Derechos de las Personas
+            con Discapacidad</strong> (ONU, 2006), que establece en su artículo 24 el derecho a un sistema
+          educativo inclusivo en todos los niveles. Varios países lo han incorporado a sus leyes de educación.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ NAVEGACIÓN DEL LIBRO ============ -->
+    <section class="section" style="padding-top: 0;">
+      <div class="libro-contenido">
+        <div class="nav-libro">
+          <span class="indice-pagina">Página 1 de 3</span>
+          <a href="pagina-2.html" class="btn btn-solid">Siguiente →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <!-- TODO: reemplaza "#" por las URLs reales cuando tengas las cuentas -->
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../script.js"></script>
+</body>
+
+</html>

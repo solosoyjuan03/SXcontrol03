@@ -1,0 +1,225 @@
+/* ============================================
+   Nutria — nutria.css
+   Estilos propios de la calculadora nutricional.
+   La base (colores, navbar, tarjetas, footer) viene de ../styles.css
+   ============================================ */
+
+/* Contenedor más angosto para la calculadora (se lee mejor) */
+.container-sm {
+  width: min(760px, 92%);
+}
+
+/* ---------- Tarjetas de cada paso ---------- */
+.paso-card {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Campos de texto ---------- */
+.campo-fila {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.campo-fila label {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.campo-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.7rem;
+}
+
+input,
+select {
+  background: var(--black);
+  border: 1px solid var(--gray);
+  color: var(--white);
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color var(--transition);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+
+/* ---------- Botones de actividad y alimentación ---------- */
+.opciones-actividad {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.actividad-btn,
+.alimentacion-btn {
+  background: transparent;
+  border: 2px solid var(--gray);
+  color: var(--text-muted);
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition);
+}
+
+.actividad-btn:hover,
+.alimentacion-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.actividad-btn.active,
+.alimentacion-btn.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--black);
+}
+
+/* ---------- Checkboxes de enfermedades ---------- */
+.condiciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.condicion-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--black);
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.condicion-item:hover {
+  border-color: var(--orange);
+}
+
+.condicion-item input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--orange);
+}
+
+.condicion-item span {
+  font-size: 0.97rem;
+}
+
+.ayuda {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-top: 0.8rem;
+}
+
+/* ---------- Botón de calcular ---------- */
+.calcular-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ---------- Resultados ---------- */
+#resultados {
+  margin-top: 3rem;
+}
+
+.resultado-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.resultado-card {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.res-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--orange);
+  margin: 0;
+}
+
+.res-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0;
+}
+
+.resultado-card h3 {
+  margin-bottom: 0.8rem;
+}
+
+.imc-card {
+  text-align: center;
+}
+
+.res-imc-categoria {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.3rem;
+}
+
+/* ---------- Listas de consejos y alertas ---------- */
+#resConsejos,
+#resAlertas {
+  margin: 0 0 0 1.2rem;
+  color: var(--text-muted);
+}
+
+#resConsejos li,
+#resAlertas li {
+  margin-bottom: 0.5rem;
+}
+
+/* Caja roja para las alertas de salud */
+.alerta-card {
+  border-color: #e74c3c;
+}
+
+.alerta-card h3 {
+  color: #e74c3c;
+}
+
+/* ---------- Aviso legal ---------- */
+.aviso {
+  background: var(--orange-soft);
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .resultado-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

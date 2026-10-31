@@ -1,0 +1,736 @@
+/* ============================================
+   SXtech — sxtech.css
+   Estilos propios del proyecto SXtech.
+   La base (colores, navbar, tarjetas, footer) viene de ../styles.css
+   ============================================ */
+
+/* ---------- Práctica como ventana modal fija (tipo Duolingo) ---------- */
+/* Ya no es una sección de la página: cubre toda la pantalla con scroll
+   propio, así no hay que hacer scroll largo para llegar a las preguntas. */
+.practica-zona {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--black);
+  overflow-y: auto;
+  padding: 2rem 0 4rem;
+}
+
+/* Barra superior de la práctica: botón para volver a la ruta siempre visible */
+.practica-topbar {
+  width: min(720px, 92%);
+  margin: 0 auto 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-cerrar-practica {
+  background: transparent;
+  border: 1px solid var(--gray);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.btn-cerrar-practica:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* Accesos directos a la siguiente/anterior lección al terminar */
+.navegacion-lecciones {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Contenedor más angosto para la práctica (se lee mejor) */
+.container-sm {
+  width: min(720px, 92%);
+}
+
+/* ---------- Pestañas de rutas ---------- */
+/* Botones grandes para elegir ruta: Programación / Inglés / Administración */
+.ruta-tabs {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.ruta-tab {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  color: var(--text-muted);
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ruta-tab:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.ruta-tab.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--black);
+}
+
+/* ---------- Módulos y lecciones (estilo Mimo: filas numeradas) ---------- */
+.modulo {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.2rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.modulo-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.modulo-titulo {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Contador y porcentaje del módulo, como Mimo ("3/6 · 50%") */
+.modulo-progreso {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Mini barra de progreso del módulo */
+.modulo-barra {
+  height: 6px;
+  background: var(--gray);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.7rem 0 1rem;
+}
+
+.modulo-relleno {
+  height: 100%;
+  width: 0%;
+  background: var(--orange);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Lecciones como filas numeradas: 01, 02, 03... */
+.lecciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.leccion {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  color: var(--white);
+  transition: all var(--transition);
+}
+
+.leccion:hover {
+  border-color: var(--orange);
+  transform: translateX(4px);
+}
+
+/* Número global de la lección dentro de la ruta */
+.leccion-num {
+  color: var(--text-muted);
+  font-weight: 800;
+  font-size: 0.95rem;
+  min-width: 2ch;
+}
+
+.leccion-nombre {
+  flex: 1;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Etiqueta del tipo: 📖 Aprender / ⚡ Práctica */
+.leccion-tipo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.leccion-tipo.teoria {
+  color: #6db3f2;
+}
+
+.leccion-tipo.practica {
+  color: var(--orange);
+}
+
+.leccion-check {
+  color: var(--orange);
+  font-weight: 800;
+  min-width: 1.2ch;
+}
+
+/* Lección ya completada: borde naranja */
+.leccion.completada {
+  border-color: var(--orange);
+}
+
+/* Lección bloqueada: atenuada, sin hover y con candado */
+.leccion.bloqueada {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.leccion.bloqueada:hover {
+  border-color: var(--gray);
+  transform: none;
+}
+
+.leccion.bloqueada .leccion-check {
+  color: var(--text-muted);
+}
+
+/* Botón Controlar: gigante a todo el ancho, como el Continuar de Mimo */
+#btnControlar {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+/* ---------- Editor de código para ordenar líneas (tipo Mimo) ---------- */
+.editor-codigo {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.editor-cab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--black-soft);
+  border-bottom: 1px solid var(--gray);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.editor-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.editor-zona {
+  padding: 1rem;
+}
+
+.ordenar-instrucciones {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Zona de respuesta: líneas ya colocadas, en orden */
+.ordenar-respuesta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  border: 2px dashed var(--gray);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  min-height: 3rem;
+}
+
+.respuesta-vacia {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.respuesta-linea {
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: var(--orange-soft);
+  color: var(--white);
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: pre; /* conserva la sangría de Python */
+}
+
+.respuesta-linea:hover {
+  border-color: #e74c3c;
+}
+
+/* ---------- Completar código: huecos inline y piezas ---------- */
+/* Línea de código con texto y huecos en la misma línea */
+.completar-codigo {
+  font-family: monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  line-height: 2.2;
+}
+
+.comp-texto {
+  color: var(--white);
+  white-space: pre; /* conserva sangría y saltos de línea de Python */
+}
+
+.comp-hueco {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: transparent;
+  border: 2px dashed var(--orange);
+  color: var(--text-muted);
+  border-radius: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  margin: 0 0.15rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.comp-hueco.lleno {
+  border-style: solid;
+  background: var(--orange-soft);
+  color: var(--white);
+}
+
+.comp-hueco.lleno:hover {
+  border-color: #e74c3c;
+}
+
+.comp-piezas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.comp-pieza {
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  color: var(--white);
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.comp-pieza:hover {
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.editor-pie {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.btn-editor {
+  background: transparent;
+  border: 1px solid var(--gray);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-editor:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+#btnVerificar {
+  padding: 0.9rem 1.6rem;
+  font-weight: 800;
+}
+
+/* Tokens de sintaxis coloreada */
+.tok-palabra {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.tok-cadena {
+  color: #6db3f2;
+}
+
+.tok-numero {
+  color: #b48eff;
+}
+
+/* Bloques de código tocables */
+.ordenar-lineas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.linea-codigo {
+  font-family: monospace;
+  font-size: 0.9rem;
+  text-align: left;
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  color: var(--white);
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: pre; /* conserva la sangría de Python */
+}
+
+.linea-codigo:hover:not(:disabled) {
+  border-color: var(--orange);
+  transform: translateX(4px);
+}
+
+.linea-codigo:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---------- Práctica (tipo Duolingo) ---------- */
+/* ---------- Teoría en pasos (tipo Mimo) ---------- */
+/* Puntos de progreso de los pasos de la lección */
+.puntos-pasos {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.punto {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--gray);
+  transition: background var(--transition);
+}
+
+.punto.activo {
+  background: var(--orange);
+}
+
+/* Texto del paso, con animación de entrada suave */
+.paso-texto {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  animation: pasoEntra 0.35s ease;
+}
+
+@keyframes pasoEntra {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botón Continuar fijo abajo de la tarjeta, gigante como Mimo */
+.btn-continuar {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--orange);
+  color: var(--black);
+  cursor: pointer;
+  transition: filter var(--transition);
+}
+
+.btn-continuar:hover {
+  filter: brightness(1.1);
+}
+
+.progreso-barra {
+  height: 10px;
+  background: var(--gray);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progreso-relleno {
+  height: 100%;
+  width: 0%;
+  background: var(--orange);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.progreso-texto {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.pregunta-card {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+}
+
+.pregunta-texto {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+}
+
+/* Opciones de respuesta: botones grandes que se marcan al elegir */
+.opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.opcion {
+  text-align: left;
+  background: transparent;
+  border: 2px solid var(--gray);
+  color: var(--white);
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.opcion:hover {
+  border-color: var(--orange);
+}
+
+.opcion.correcta {
+  border-color: #2ecc71;
+  background: rgba(46, 204, 113, 0.15);
+}
+
+.opcion.incorrecta {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.15);
+}
+
+/* Mensaje de acierto/error debajo de las opciones */
+.feedback {
+  margin-top: 1rem;
+  font-weight: 700;
+  min-height: 1.4rem;
+}
+
+.feedback.ok {
+  color: #2ecc71;
+}
+
+.feedback.mal {
+  color: #e74c3c;
+}
+
+#btnSiguiente {
+  margin-top: 1rem;
+}
+
+/* ---------- Pantalla final ---------- */
+.leccion-final {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.final-emoji {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+#finalTitulo {
+  margin-bottom: 0.5rem;
+}
+
+#btnCerrar {
+  margin-top: 1rem;
+}
+/* ============================================
+   Mejoras SXtech — lecciones largas y detalles
+   ============================================ */
+
+/* ---------- Editor "Escribe el código" ---------- */
+.pista-codigo {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--orange);
+  border-radius: 0.3rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0.8rem 0;
+}
+
+.escribe-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Pseudoterminal donde aparece el código escrito */
+.escribe-codigo {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+  min-height: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.escribe-codigo .respuesta-linea {
+  cursor: default; /* aquí las líneas no se pueden tocar, solo ver */
+}
+
+/* Campo para escribir la línea actual */
+.escribe-input {
+  font-family: monospace;
+  font-size: 0.95rem;
+  background: var(--black-soft);
+  border: 2px solid var(--gray);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.escribe-input:focus {
+  border-color: var(--orange);
+}
+
+.escribe-acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* ---------- Botón primario/secundario de la zona larga ---------- */
+.btn-primario {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-top: 1rem;
+}
+
+.btn-primario:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.btn-primario:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secundario {
+  background: transparent;
+  border: 1px solid var(--gray);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-secundario:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ---------- Indicador de tipo de paso ---------- */
+/* El texto grande de "Piensa / Lee / Escribe..." antes del título */
+#practicaTituloAntes {
+  opacity: 0.85;
+}
+
+/* Feedback dentro de la zona larga alineado a la izquierda */
+#zonaLarga .feedback {
+  min-height: 1.4rem;
+  font-weight: 700;
+}
+
+/* ---------- Progreso de la lección larga ---------- */
+/* La barra ya existe; solo se suaviza su animación */
+#progresoRelleno {
+  transition: width 0.4s ease;
+}
+
+/* ---------- Móvil: apilar acciones del editor ---------- */
+@media (max-width: 600px) {
+  .escribe-acciones {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .escribe-acciones .btn-primario,
+  .escribe-acciones .btn-secundario {
+    width: 100%;
+    text-align: center;
+  }
+}

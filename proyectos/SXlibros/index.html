@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  SXcontrol — SXlibros (SXlibros/index.html)
+  ------------------------------------------
+  Proyecto: libros tipo página web sobre diferentes temas.
+  Cada libro es una carpeta con sus páginas html.
+
+  Catálogo actual:
+  - Educación Inclusiva (3 páginas) -> educacion-inclusiva/
+
+  PARA AGREGAR UN LIBRO NUEVO:
+  1. Crea una carpeta con el nombre del libro (p. ej. mi-libro/).
+  2. Crea dentro sus páginas html (p. ej. pagina-1.html, pagina-2.html...).
+  3. Copia la estructura de las páginas de educacion-inclusiva/
+     (mismo header, footer y css de navegación de páginas).
+  4. Agrega la tarjeta del libro en el array "libros" de sxlibros.js.
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SXlibros — Libros en web | SXcontrol</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <!-- Estilos propios del catálogo de libros -->
+  <link rel="stylesheet" href="sxlibros.css">
+</head>
+
+<body>
+  <!-- ============ BARRA DE NAVEGACIÓN ============ -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../../index.html" class="logo">SX<span>control</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../../index.html" class="nav-link">Inicio</a>
+        <a href="../../comunidad/comunidad.html" class="nav-link">Comunidad</a>
+        <a href="../Proyectos.html" class="nav-link">Proyectos</a>
+        <a href="../../servicios/servicios.html" class="nav-link">Servicios</a>
+        <a href="#libros" class="btn btn-outline nav-cta">Libros</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero hero-sm">
+      <div class="container">
+        <p class="eyebrow">SXcontrol · SXlibros</p>
+        <h1>Libros que se <span class="accent">leen en la web</span></h1>
+        <p class="lead">
+          Publicaciones breves sobre temas importantes, hechas con páginas web
+          simples: HTML, CSS y JavaScript puro, sin librerías.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CATÁLOGO DE LIBROS ============ -->
+    <!-- Las tarjetas de libros se pintan con JS (array "libros" en sxlibros.js) -->
+    <section class="section" id="libros">
+      <div class="container">
+        <h2 class="section-title">Catálogo <span class="accent">disponible</span></h2>
+        <p class="section-sub">Elige un libro y empieza a leer. Cada libro se divide en páginas navegables.</p>
+        <div class="grid grid-3" id="librosGrid"><!-- se llena con JS --></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">SX<span>control</span></p>
+      <p>© 2026 SXcontrol — Comunidad Open Source. Hecho con ❤ y software libre.</p>
+      <div class="socials">
+        <!-- TODO: reemplaza "#" por las URLs reales cuando tengas las cuentas -->
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Mastodon">Mastodon</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS propio: catálogo de libros -->
+  <script src="sxlibros.js"></script>
+</body>
+
+</html>

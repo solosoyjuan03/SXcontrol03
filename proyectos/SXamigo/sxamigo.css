@@ -1,0 +1,57 @@
+/* ============================================
+   SXamigo — sxamigo.css
+   Estilos propios del proyecto SXamigo.
+   La base (colores, navbar, tarjetas, footer) viene de ../styles.css
+   ============================================ */
+
+/* ---------- Acordeón (preguntas y respuestas) ---------- */
+/* Usa los elementos nativos <details> y <summary>, así funciona sin JS. */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.accordion details {
+  background: var(--black-soft);
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  transition: border-color var(--transition);
+}
+
+/* El bloque que está abierto se resalta con el borde naranja */
+.accordion details[open] {
+  border-color: var(--orange);
+}
+
+.accordion summary {
+  padding: 1.1rem 1.4rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--white);
+  list-style: none;
+  /* oculta la flechita por defecto del navegador */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Flecha que gira cuando el bloque está abierto */
+.accordion summary::after {
+  content: "▾";
+  color: var(--orange);
+  font-size: 1.2rem;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.accordion details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.accordion details p {
+  padding: 0 1.4rem 1.2rem;
+  color: var(--text-muted);
+  font-size: 0.97rem;
+}
